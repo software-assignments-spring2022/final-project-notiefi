@@ -11,7 +11,7 @@ function BrowseClassCard(props) {
     <div
       className={`min-w-150 h-64 min-h-fit w-full rounded-xl shadow-lg ${props.color} ${props.hover} relative cursor-pointer`}>  
       <div className="min-h-fit min-w-full">
-        <Link href="class">
+        <Link href={`class/${props.classCode}`}>
           <h2 className="mt-5 ml-5 text-xl hover:text-gray-600">{props.name}</h2>
         </Link>
         

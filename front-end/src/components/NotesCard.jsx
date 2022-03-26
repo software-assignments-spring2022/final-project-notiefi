@@ -8,12 +8,12 @@ const NotesCard = props => {
   const router = useRouter();
 
   return (
-    <div className={` px-10 py-5 rounded-3xl bg-slate-100 mb-10`}>
-        <div className='flex justify-between text-purple-600 align-top'>
-            <Link href='note'>
-              <h1 className="text-xl font-bold my-3 cursor-pointer hover:text-purple-700">{props.title}</h1>
+    <div className={`group px-10 py-5 rounded-3xl bg-slate-100 last:mb-10 ${props.className} hover:bg-neutral-300`}>
+        <div className='flex justify-between text-blue-600 align-top group-hover:text-black'>
+            <Link href={`/notes/${props.title}`}>
+              <h1 className="text-xl font-bold my-3 cursor-pointer hover:text-neutral-600">{props.title}</h1>
             </Link>
-            <HeartButton/>
+            <HeartButton className="" />
         </div>
         <p className="text-slate-800">{props.description}</p>
     </div>

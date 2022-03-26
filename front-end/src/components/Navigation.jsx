@@ -31,10 +31,12 @@ function Navigation(props) {
       <div className="col-span-full flex content-center justify-between pt-2 lg:col-span-5 lg:justify-end">
         <ul className="list-reset flex flex-1 items-center justify-between lg:flex-none">
           <li className="mr-3">
-          <a className="link">Upload Notes</a>
+          <Link href="/notes/upload">
+            <a className="link">Upload Notes</a>
+          </Link>
           </li>
           <li className="mr-3">
-          <Link href="browse">
+          <Link href="/browse">
                 <a className={`link ${props.bold}`}>Browse Classes</a>
               </Link>
           </li>
@@ -42,7 +44,7 @@ function Navigation(props) {
           <NavigationBell/>
           </li>
           <li className="mr-3 last:mr-0">
-          <Link href="profile">
+          <Link href="/profile">
                 <a className="link">
                   <VscAccount size={28} />
                 </a>
