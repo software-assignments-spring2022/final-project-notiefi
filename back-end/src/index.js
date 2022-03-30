@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'test')));
 
-
 app.listen(port);
 
 app.get('/browse', (res, req, next) => {
