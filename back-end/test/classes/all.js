@@ -1,4 +1,4 @@
-[
+const allClasses = [
     {
       classCode: 'CSCI-UA.0101',
       name: 'Introduction to Computer Science',
@@ -96,3 +96,5 @@
       hover: 'hover:bg-indigo-300',
     },
   ]
+
+export default allClasses;
