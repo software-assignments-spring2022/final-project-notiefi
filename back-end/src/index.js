@@ -16,4 +16,4 @@ app.listen(port);
 
 app.get('/browse', (res, req, next) => {
     res.send(allClasses)
-})
+});
