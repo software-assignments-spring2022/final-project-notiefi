@@ -2,9 +2,9 @@ const express = require('express');
 require('dotenv').config();
 const allClasses = require('./test/classes/all.js')
 
-const app = express();
+const router = express.router()
 
-app.get('/browse', (res, req, next) => {
+router.get('/browse', (res, req, next) => {
     res.send(allClasses)
 });
 
