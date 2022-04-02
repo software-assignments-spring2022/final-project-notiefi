@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha src/tests/**/*.js --recursive --exit",
     "dev": "nodemon src/index.js",
-    "start": "NODE_ENV=production node index.js"
+    "start": "NODE_ENV=production node index.js",
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "keywords": [],
   "author": "",
@@ -15,8 +16,12 @@
     "express": "^4.17.3"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "dotenv": "^16.0.0",
     "eslint": "^8.12.0",
+    "faker": "^5.5.3",
+    "mocha": "^9.2.2",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.1"
   }

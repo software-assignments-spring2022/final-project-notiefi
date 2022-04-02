@@ -66,5 +66,9 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+# Pnpm
+pnpm-lock.yaml
+
 # Vscode files
 .vscode/
+*.code-workspace
