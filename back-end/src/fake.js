@@ -40,6 +40,9 @@ function notes(n) {
       createdAt: faker.date.past(),
     });
   }
+
+  
+  return notes;
 }
 
 function comments(n) {

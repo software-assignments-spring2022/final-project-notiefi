@@ -1,10 +1,7 @@
-const express = require('express');
-const browse = require('./classes/index.js');
-const notes = require('./notes/index.js')
+const router = require('express').Router();
 
-const app = express()
+router.use('/users', require('./users'));
+router.use('/classes', require('./classes'));
+router.use('/notes', require('./notes'));
 
-module.exports = (app) => {
-    app.use('/browse', browse);
-    app.use('/:slug/:slug', notes);
-}
+module.exports = router;
