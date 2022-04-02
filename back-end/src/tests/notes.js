@@ -75,15 +75,70 @@ describe('Notes API', () => {
   it('should change the notes title', (done) => {
     chai   
     .request(server)
-    .put('/api/notes/2005b873-dd55-4ebe-8165-76ce6d9b83a6')
+    .put('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
     .send({
-      title: 'Test2',
+      title: 'Test2 Notes',
     })
     .end((err, res) => {
       assert.equal(res.status, 200);
-      assert.equal(res.body.title, 'Test2');
+      assert.equal(res.body.title, 'Test2 Notes');
       done();
     });
+  });
+
+  it('should change the notes text', (done) => {
+    chai   
+    .request(server)
+    .put('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
+    .send({
+      text: 'Test2 Text',
+    })
+    .end((err, res) => {
+      assert.equal(res.status, 200);
+      assert.equal(res.body.text, 'Test2 Text');
+      done();
+    });
+  });
+
+  it('should return note by id', (done) => {
+    chai
+      .request(server)
+      .get('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
+      .end((err, res) => {
+        assert.equal(res.status, 200);
+        assert.property(res.body, 'id');
+        assert.property(res.body, 'class');
+        assert.property(res.body, 'title');
+        assert.property(res.body, 'user');
+        assert.property(res.body, 'text');
+        assert.property(res.body, 'comments');
+        assert.property(res.body, 'attachments');
+        assert.property(res.body, 'likes');
+        assert.property(res.body, 'createdAt');
+        done();
+      });
+  });
+
+  it('should delete note by id', (done) => {
+    chai
+      .request(server)
+      .delete('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
+      .end((err, res) => {
+        assert.equal(res.status, 200);
+        assert.equal(res.text, 'Note deleted');
+        done();
+      });
+  });
+
+  it('should not find deleted note', (done) => {
+    chai
+      .request(server)
+      .get('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
+      .end((err, res) => {
+        assert.equal(res.status, 404);
+        assert.equal(res.text, 'Note not found');
+        done();
+      });
   });
 
 });

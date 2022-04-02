@@ -40,8 +40,18 @@ function notes(n) {
       createdAt: faker.date.past(),
     });
   }
+  notes.push({
+    id: '2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01',
+    class: 'Test Class',
+    title: 'Test Title',
+    user: '11118469-f8b7-4204-b1a9-b875dd5a775b',
+    text: 'posted these test notes!',
+    comments: comments(faker.datatype.number({ max: 10 })),
+    attachments: attachments(faker.datatype.number({ max: 10 })),
+    likes: faker.datatype.number({ max: 1000 }),
+    createdAt: '2019-01-01T00:00:00.000Z',
+  })
 
-  
   return notes;
 }
 
