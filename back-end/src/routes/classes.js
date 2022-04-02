@@ -1,8 +1,18 @@
 const router = require('express').Router();
-const searchController = require('../controllers/classes/search');
+const controller = require('../controllers/classes');
 
 router
-  .route('/search')
-  .post(searchController.post);
+  .route('/')
+  .get(controller.get)
+
+router
+  .route('/:id')
+  .get(controller.getById)
+  .put(controller.put)
+  .delete(controller.delete);
+
+router
+  .route('/create')
+  .post(controller.post);
 
 module.exports = router;
