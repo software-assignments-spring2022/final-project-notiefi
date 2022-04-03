@@ -12,12 +12,12 @@ const post = (req, res) => {
     id: faker.datatype.uuid(),
     title: req.body.title,
     user: req.body.user,
-    likes: 1,
-    date: faker.date.past(),
+    seen: false,
+    date: req.body.date,
     createdAt: faker.date.past(),
   };
   notifications.push(notification);
-  res.send(notification);
+  res.status(201).send(notification);
 };
 
 const getById = (req, res) => {
@@ -35,6 +35,12 @@ const put = (req, res) => {
   if (req.body.title) {
     notification.title = req.body.title;
   }
+  if (req.body.date) {
+    notification.date = req.body.date;
+  }
+  if (req.body.seen) {
+    notification.seen = req.body.seen;
+  }
   res.send(notification);
 };
 
@@ -43,7 +49,7 @@ const del = (req, res) => {
 
   if (notification) {
     notifications.splice(notifications.indexOf(notification));
-    res.send('Note deleted');
+    res.status(204).end();
   } else {
     res.status(404).send('Notification not found');
   }

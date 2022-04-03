@@ -1,12 +1,11 @@
 const router = require('express').Router();
 const controller = require('../controllers/notifications');
 
-router.route('/').get(controller.get);
+router.route('/').get(controller.get).post(controller.post);
 
 router
   .route('/:id')
   .get(controller.getById)
-  .post(controller.post)
   .put(controller.put)
   .delete(controller.delete);
 
