@@ -5,7 +5,7 @@ const server = require('../index');
 chai.use(chaiHttp);
 const assert = chai.assert;
 
-const testId = "2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01"
+const testId = '2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01';
 
 describe('Notifications API', () => {
   it('should return all notifications', (done) => {
