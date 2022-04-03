@@ -7,7 +7,7 @@ const assert = chai.assert;
 
 describe('Notes API', () => {
   it('should return all notes', (done) => {
-    chai  
+    chai
       .request(server)
       .get('/api/notes')
       .end((err, res) => {
@@ -48,13 +48,17 @@ describe('Notes API', () => {
         user: '2005b873-dd55-4ebe-8165-76ce6d9b83a6',
         text: 'This is about test',
         comments: [
-            {user: '021f8995-a864-4fa8-a101-6a6aa3ffd198',
+          {
+            user: '021f8995-a864-4fa8-a101-6a6aa3ffd198',
             comment: 'test comment 1',
-            likes: 10,}, 
-            {user: '6d946621-602c-4b78-bcb8-71689827034b',
+            likes: 10,
+          },
+          {
+            user: '6d946621-602c-4b78-bcb8-71689827034b',
             comment: 'test comment 2',
-            likes: 20,}
-            ],
+            likes: 20,
+          },
+        ],
         attachments: ['test.jpg'],
         likes: 1,
       })
@@ -73,31 +77,31 @@ describe('Notes API', () => {
   });
 
   it('should change the notes title', (done) => {
-    chai   
-    .request(server)
-    .put('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
-    .send({
-      title: 'Test2 Notes',
-    })
-    .end((err, res) => {
-      assert.equal(res.status, 200);
-      assert.equal(res.body.title, 'Test2 Notes');
-      done();
-    });
+    chai
+      .request(server)
+      .put('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
+      .send({
+        title: 'Test2 Notes',
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200);
+        assert.equal(res.body.title, 'Test2 Notes');
+        done();
+      });
   });
 
   it('should change the notes text', (done) => {
-    chai   
-    .request(server)
-    .put('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
-    .send({
-      text: 'Test2 Text',
-    })
-    .end((err, res) => {
-      assert.equal(res.status, 200);
-      assert.equal(res.body.text, 'Test2 Text');
-      done();
-    });
+    chai
+      .request(server)
+      .put('/api/notes/2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01')
+      .send({
+        text: 'Test2 Text',
+      })
+      .end((err, res) => {
+        assert.equal(res.status, 200);
+        assert.equal(res.body.text, 'Test2 Text');
+        done();
+      });
   });
 
   it('should return note by id', (done) => {
@@ -140,6 +144,4 @@ describe('Notes API', () => {
         done();
       });
   });
-
 });
-

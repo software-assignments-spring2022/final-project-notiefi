@@ -50,7 +50,7 @@ function notes(n) {
     attachments: attachments(faker.datatype.number({ max: 10 })),
     likes: faker.datatype.number({ max: 1000 }),
     createdAt: '2019-01-01T00:00:00.000Z',
-  })
+  });
 
   return notes;
 }
@@ -78,29 +78,55 @@ function attachments(n) {
 }
 
 function classes(n) {
-    const classes = [];
-  
-    for (let i = 1; i <= n; i++) {
-      classes.push({
-        id: faker.datatype.uuid(),
-        name: faker.lorem.words() + '101',
-        classCode: faker.random.word() + '-101',
-        university: faker.address.cityName() + ' University',
-        createdAt: faker.date.past(),
-      });
-    }
+  const classes = [];
+
+  for (let i = 1; i <= n; i++) {
     classes.push({
-      id: '621522b8-22b7-4634-befc-0a5785f53d3d',
-      name: 'Test Class 101',
-      classCode: 'Test-101',
-      university: 'Test University',
-      createdAt: '2019-01-01T00:00:00.000Z',
+      id: faker.datatype.uuid(),
+      name: faker.lorem.words() + '101',
+      classCode: faker.random.word() + '-101',
+      university: faker.address.cityName() + ' University',
+      createdAt: faker.date.past(),
     });
-    return classes;
   }
+  classes.push({
+    id: '621522b8-22b7-4634-befc-0a5785f53d3d',
+    name: 'Test Class 101',
+    classCode: 'Test-101',
+    university: 'Test University',
+    createdAt: '2019-01-01T00:00:00.000Z',
+  });
+  return classes;
+}
+
+const notifications = (n) => {
+  const notifications = [];
+
+  for (let i = 1; i <= n; i++) {
+    notifications.push({
+      id: faker.datatype.uuid(),
+      title: faker.lorem.words(),
+      user: faker.datatype.uuid(),
+      seen: faker.datatype.boolean(),
+      date: faker.date.past(),
+      createdAt: faker.date.past(),
+    });
+  }
+  notifications.push({
+    id: '2ca5a3e5-e774-40ee-9c2d-b7f8c7081b01',
+    title: 'Welcome to Notiefi',
+    user: '11118469-f8b7-4204-b1a9-b875dd5a775b',
+    seen: false,
+    date: '2019-01-01T00:00:00.000Z',
+    createdAt: '2019-01-01T00:00:00.000Z',
+  });
+
+  return notifications;
+};
 
 module.exports = {
   users,
   notes,
   classes,
+  notifications,
 };

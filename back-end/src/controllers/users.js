@@ -54,7 +54,7 @@ module.exports = {
 
   // /users/:id/notes
 
-  getNotes: (req, res) => {
+  getNotes: async (req, res) => {
     let user = users.find((user) => user.id === req.params.id);
 
     if (user) {
@@ -63,10 +63,9 @@ module.exports = {
       res.status(404).send('User not found');
     }
 
-    const notes = await axios.get(process.env.API+'/api/notes').data;
-    
+    const notes = await axios.get(process.env.API + '/api/notes').data;
+
     let usersNotes = notes.filter((note) => note.userId === req.params.id);
     res.send(usersNotes);
-
-  }
+  },
 };
