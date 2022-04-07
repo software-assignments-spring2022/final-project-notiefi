@@ -18,6 +18,10 @@ const HeartButton = (props) => {
     await axios.put(`http://localhost:3001/api/notes/${props.id}/like`, {
       liked: !liked,
     });
+
+    if (liked) {
+      await axios.post('http://localhost:3001/api/notes/saved', props)
+    }
   };
 
   return (

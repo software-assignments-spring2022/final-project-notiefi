@@ -74,4 +74,31 @@ module.exports = {
       res.status(404).send('Note not found');
     }
   },
+
+  postNotes: (req, res) => {
+    const note = {
+      id: faker.datatype.uuid(),
+      class: req.body.class,
+      title: req.body.title,
+      user: req.body.user,
+      text: req.body.text,
+      attachments: req.body.attachments,
+      likes: 1, 
+      createdAt: faker.date.past(),
+      liked = true,
+    };
+    notes.push(note);
+    res.send('Note saved!');
+  },
+
+  getSavedNotes: (req, res) => {
+    let note = notes.find((note) => note.liked == true);
+    if (note) {
+      res.send(note);
+    } else {
+      res.status(404).send('Note not found');
+    }
+  },
 };
+
+

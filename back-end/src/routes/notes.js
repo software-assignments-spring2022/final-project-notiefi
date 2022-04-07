@@ -13,4 +13,7 @@ router.route('/create').post(controller.post);
 
 router.route('/:id/like').put(controller.like);
 
+router.route('/saved').post(controller.postNotes);
+router.route('/saved').get(controller.getSavedNotes);
+
 module.exports = router;

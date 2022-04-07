@@ -7,7 +7,7 @@ function upload(props) {
       <div className="pb-2 text-center text-2xl">
         <p> Upload Notes </p>
       </div>
-      <form action="http://localhost:3001/api/notes/create" method="post">
+      <form action="http://localhost:3001/api/notes/create" method="post" enctype="multipart/form-data">
         <div className="p-2">
           <select
             required

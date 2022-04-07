@@ -6,7 +6,7 @@ import { Tab } from '@headlessui/react';
 import Link from 'next/link';
 import process from 'process';
 
-export default function Profile({ picture, user, userNotes }) {
+export default function Profile({ picture, user, userNotes, userSavedNotes }) {
   let [notes] = useState({
     saved: [
       {
@@ -130,5 +130,11 @@ export async function getServerSideProps() {
     )
   );
 
-  return { props: { picture, user, userNotes } };
+  const userSavedNotes = await JSON.stringify(
+    axios.get(
+      'http://localhost:3001/api/notes/saved'
+    )
+  );
+
+  return { props: { picture, user, userNotes, userSavedNotes } };
 }
