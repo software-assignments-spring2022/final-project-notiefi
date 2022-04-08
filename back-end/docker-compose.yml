@@ -1,0 +1,32 @@
+version: '3.0'
+
+services:
+  app:
+    build: .
+    restart: always
+    volumes:
+      - ./src/:/app/src/
+    ports:
+      - 3001:3001
+    networks:
+      - database_network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    env_file:
+      - ./.env.db
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data
+    networks:
+      - database_network
+
+volumes:
+  mongodb_data:
+
+networks:
+  database_network:
+    driver: bridge
